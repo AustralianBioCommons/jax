@@ -29,6 +29,9 @@ def repo():
         sha256 = XLA_SHA256,
         strip_prefix = "xla-{commit}".format(commit = XLA_COMMIT),
         urls = tf_mirror_urls("https://github.com/openxla/xla/archive/{commit}.tar.gz".format(commit = XLA_COMMIT)),
+        patches = ["//patches:enable_unified_memory.patch"],
+        patch_tool = "patch",
+        patch_args = ["-p1"],
     )
 
     # For development, one often wants to make changes to the TF repository as well
